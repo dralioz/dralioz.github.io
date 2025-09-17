@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Durmuş Ali Öztürk - AI Engineer</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            margin: 0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .name {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .title {
+            font-size: 1.2em;
+            margin: 10px 0 20px 0;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .experience-item,
+        .education-item,
+        .project-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .job-title {
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .company {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .duration {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-align: center;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .interest-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: #f8f9ff;
+            border-radius: 10px;
+        }
+
+        .interest-icon {
+            font-size: 1.2em;
+        }
+
+        ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        li::before {
+            content: '▶';
+            color: #667eea;
+            position: absolute;
+            left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .name {
+                font-size: 2em;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+        }
+    </style>
+</head>
+<<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1 class="name">DURMUŞ ALİ ÖZTÜRK</h1>
+                <p class="title">AI Engineer | Computer Vision | LLM | Model Optimization</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <a href="mailto:durmusali.dali@gmail.com">durmusali.dali@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <span>+905396377304</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>🔗</span>
+                        <a href="https://github.com/dralioz" target="_blank">github.com/dralioz</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>💼</span>
+                        <a href="https://linkedin.com/in/d-ali-öztürk" target="_blank">LinkedIn</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Pendik, İSTANBUL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">💡 ÖZET</h2>
+                <p>Meraklı, enerjik ve tutkulu bir AI Engineer'ım. Öğrenmeyi, geliştirmeyi ve işbirliği yapmayı seven
+                    biriyim. Yazılım becerilerinin önemli olduğuna, yaratıcılığın, uyum sağlayabilirliğin ve pozitif,
+                    çözüm odaklı bir takım arkadaşı olmanın gerçekten başarı için kritik olduğuna inanıyorum.</p>
+                <p>AI ve bilgisayarlı görü alanında iki yıldan fazla deneyimim var, özellikle KYC, dolandırıcılık
+                    tespiti ve uçtan uca sistem geliştirme konularında gerçek dünya projelerinde çalıştım. Çalışmalarım
+                    hem geleneksel makine öğrenmesi pipeline'ları hem de LLM tabanlı modern generative AI sistemleri,
+                    Model Context Protocol (MCP) mimarileri ve özel araçlar gelişmeyi kapsıyor.</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">💼 DENEYİM</h2>
+
+                <div class="experience-item">
+                    <div class="job-title">Specialist AI Researcher</div>
+                    <div class="company">Intertech</div>
+                    <div class="duration">2023 - Günümüz | Hibrit</div>
+                    <ul>
+                        <li>14+ AI destekli mikroservisi üretimde mimarladım ve teslim ettim, finans alanında fraud
+                            tespiti, KYC fraud tespiti ve belge analizi konularında gerçek zamanlı sistemler
+                            geliştirdim.</li>
+                        <li>Tam MLOps yaşam döngüsünü led ettim - veri tasarımından model eğitimine, FastAPI, Docker,
+                            OpenVINO ve ONNX kullanarak optimizasyon ve deployment.</li>
+                        <li>Donanım farkında optimizasyon stratejileri ile düşük gecikmeli çıkarım mimarileri (<200ms)
+                                ve ince ayarlı model servis tasarladım.</li>
+                        <li>OpenAI API'leri, Whisper ve özel yerel LLM'leri Model Context Protocol (MCP) ve RAG
+                            pipeline'ları kullanarak çoklu modalite, karşıt analiz ve otomatik sentetik veri üretimi
+                            için entegre ettim.</li>
+                        <li>Onboarding, otomasyon ve konuşma AI deneyimlerini desteklemek için TrainerBot gibi dahili
+                            araçlar geliştirdim.</li>
+                        <li>Product Owner olarak çalıştım - 30+ uzman arasında üç farklı takımda gerçek dünya CV ve NLP
+                            projeleri.</li>
+                        <li>SQL, Redis ve ELK Stack kullanarak log, analitik ve caching konularında sağlam altyapı
+                            geliştirdim.</li>
+                        <li>AI yeteneklerini iş ve düzenleyici hedeflerle uyumlu hale getirmek için ürün, uyumluluk ve
+                            altyapı ekipleriyle çapraz fonksiyonel çalıştım.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">AI Researcher Intern</div>
+                    <div class="company">Intertech</div>
+                    <div class="duration">2022 - 2023 | Uzaktan</div>
+                    <ul>
+                        <li>XGBoost ve diğer denetimli öğrenme modelleri kullanarak zaman serisi tahminleme ve
+                            sınıflandırma problemleri üzerinde AR-GE yaptım.</li>
+                        <li>KYC ile ilgili girişimlerin bir parçası olarak belge analizi ve yüz tanıma için bilgisayarlı
+                            görü prototipleri geliştirdim.</li>
+                        <li>Finansal AI ortamında model eğitimi, değerlendirme ve deployment temelleri konusunda
+                            uygulamalı deneyim kazandım.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">Computer Vision Engineer Intern</div>
+                    <div class="company">Texinsight</div>
+                    <div class="duration">02/2022 | Ofiste</div>
+                    <ul>
+                        <li>Bilgisayarlı görü ve AI'da kalite ve verimliliği artırmayı hedefleyen projeler geliştiren
+                            bir şirket.</li>
+                        <li>Stajyer sorumlulukları işgücünün döngü süresini analiz etmek için bir yapı oluşturmayı
+                            içeriyordu.</li>
+                        <li>Python ile pose estimation tabanlı aksiyon tanıma ağlarını kullandım.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">Python Project Developer</div>
+                    <div class="company">Upwork</div>
+                    <div class="duration">2020 - 2022 | Online</div>
+                    <ul>
+                        <li>Upwork, Fiverr ve Bionluk gibi platformlarda freelance AI ve bilgisayarlı görü projeleri
+                            teslim ettim.</li>
+                        <li>Nesne tespiti, sınıflandırma ve otomasyon görevlerini içeren orta seviye çözümler
+                            geliştirdim.</li>
+                        <li>Backend (FastAPI), mobil ve gömülü sistem geliştirme konularında uygulamalı deneyim
+                            kazandım.</li>
+                        <li>ML servisleri deploy etmek için FastAPI konusunda güçlü Python ve yaygın kullanılan AI
+                            framework'leri ve kütüphanelerinde yetkin.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">Vice President In Charge of Organization</div>
+                    <div class="company">Electronics Project Investigation Club, Marmara University</div>
+                    <div class="duration">06/2019 - 05/2020 | Lokasyon</div>
+                    <ul>
+                        <li>Yarışmalara katılmak ve kariyerimize katkıda bulunmak için projeleri geliştiren bir
+                            topluluk.</li>
+                        <li>Topluluk çeşitli etkinlikler düzenler ve sosyal sorumlu projeler yapar.</li>
+                        <li>Görevim sponsorluk, etkinlik ve sosyal medya komitelerini yönetmek.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">🎓 EĞİTİM</h2>
+
+                <div class="education-item">
+                    <div class="job-title">Bachelor's Degree, Electrical & Electronics Engineering</div>
+                    <div class="company">Marmara University - Faculty of engineering</div>
+                    <div class="duration">2017 - 2023 | Kadıköy/İstanbul</div>
+                    <p>İşle ilgili temel öğrenme, deneyim ve beceriler kazanıldı.</p>
+                </div>
+
+                <div class="education-item">
+                    <div class="job-title">Prep School</div>
+                    <div class="company">Marmara University - Prep School</div>
+                    <div class="duration">2016 | Kadıköy/İstanbul</div>
+                    <p>İşle ilgili temel öğrenme, deneyim ve beceriler kazanıldı.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">🚀 PROJELER</h2>
+
+                <div class="project-item">
+                    <div class="job-title">Autonomous Vehicle Project</div>
+                    <div class="duration">2018 - 2020 | Marmara University</div>
+                    <div class="company">Deep Learning Model Development and Car Design</div>
+                    <ul>
+                        <li>Autonomous Car Competition adlı yarışmalara katılmak için kendini geliştiren arabaları
+                            geliştiren bir proje ekibi.</li>
+                        <li>Görevim iki takım arkadaşımla birlikte Python programlama kullanarak derin öğrenme modelleri
+                            tasarlamak ve geliştirmekti.</li>
+                    </ul>
+                </div>
+
+                <div class="project-item">
+                    <div class="job-title">Eng. Project with AI</div>
+                    <div class="duration">2020 - 2022 | Marmara University | Supervisor: Assoc. Prof. Onur Cihan</div>
+                    <div class="company">To detect and remove blurry areas on images</div>
+                    <ul>
+                        <li>TÜBİTAK 2209-A programı tarafından desteklenen mühendislik projesi</li>
+                        <li>Projenin amacı bir görüntüde bulanık alanları tespit etmektir</li>
+                        <li>Proje yapay zeka ağları ile bulanıklık oranını azaltıyor</li>
+                        <li>Fonksiyonellik telefon veya web sitesi üzerinden kullanılabilir</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">🛠️ BECERİLER</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">FastAPI</div>
+                    <div class="skill-item">Docker</div>
+                    <div class="skill-item">OpenCV</div>
+                    <div class="skill-item">YOLO</div>
+                    <div class="skill-item">Whisper</div>
+                    <div class="skill-item">OpenAI API</div>
+                    <div class="skill-item">MCP</div>
+                    <div class="skill-item">RAG</div>
+                    <div class="skill-item">TensorFlow</div>
+                    <div class="skill-item">PyTorch</div>
+                    <div class="skill-item">ONNX</div>
+                    <div class="skill-item">OpenVINO</div>
+                    <div class="skill-item">Redis</div>
+                    <div class="skill-item">SQL</div>
+                    <div class="skill-item">ELK</div>
+                    <div class="skill-item">LangChain</div>
+                    <div class="skill-item">Prompt Engineering</div>
+                    <div class="skill-item">Computer Vision</div>
+                    <div class="skill-item">LLMs</div>
+                    <div class="skill-item">Synthetic Data</div>
+                    <div class="skill-item">Embedding Models</div>
+                    <div class="skill-item">CI/CD</div>
+                    <div class="skill-item">API Design</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">🌍 DİLLER</h2>
+                <div class="education-item">
+                    <div class="job-title">English</div>
+                    <div class="company">Proficient ●●●●○</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">🎯 İLGİ ALANLARI</h2>
+                <div class="interests-grid">
+                    <div class="interest-item">
+                        <span class="interest-icon">💃</span>
+                        <span>Latin Dancing</span>
+                    </div>
+                    <div class="interest-item">
+                        <span class="interest-icon">🎸</span>
+                        <span>Playing guitar</span>
+                    </div>
+                    <div class="interest-item">
+                        <span class="interest-icon">🎵</span>
+                        <span>Concert</span>
+                    </div>
+                    <div class="interest-item">
+                        <span class="interest-icon">👨‍🍳</span>
+                        <span>Cooking</span>
+                    </div>
+                    <div class="interest-item">
+                        <span class="interest-icon">🎧</span>
+                        <span>Listening music</span>
+                    </div>
+                    <div class="interest-item">
+                        <span class="interest-icon">🦸‍♂️</span>
+                        <span>Marvel</span>
+                    </div>
+                    <div class="interest-item">
+                        <span class="interest-icon">♟️</span>
+                        <span>Playing chess</span>
+                    </div>
+                    <div class="interest-item">
+                        <span class="interest-icon">🧘‍♀️</span>
+                        <span>Pilates</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">📞 REFERANSLAR</h2>
+                <div class="experience-item">
+                    <div class="job-title">Assoc. Prof. Onur Cihan</div>
+                    <div class="company">Reference Contact</div>
+                </div>
+                <div class="experience-item">
+                    <div class="job-title">İbrahim Onur Sığırcı</div>
+                    <div class="company">Reference Contact</div>
+                </div>
+                <div class="experience-item">
+                    <div class="job-title">İlker Halil Türer</div>
+                    <div class="company">Reference Contact</div>
+                </div>
+                <div class="experience-item">
+                    <div class="job-title">Mustafa Nişancı</div>
+                    <div class="company">Reference Contact</div>
+                </div>
+                <div class="experience-item">
+                    <div class="job-title">Çağrı Aksu</div>
+                    <div class="company">Reference Contact</div>
+                </div>
+                <div class="experience-item">
+                    <div class="job-title">Şevket Ay</div>
+                    <div class="company">Reference Contact</div>
+                </div>
+                <div class="experience-item">
+                    <div class="job-title">Hakkı Büyükkahraman</div>
+                    <div class="company">Reference Contact</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+
+</html>
