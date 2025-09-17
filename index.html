@@ -17,42 +17,22 @@
             margin: 0;
             line-height: 1.6;
             min-height: 100vh;
-            padding-top: 70px;
         }
 
-        /* Navigation Styles */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 20px;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            font-size: 1.2em;
-            font-weight: 600;
-            color: #667eea;
-        }
-
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
+        /* Hamburger Menu Styles */
         .hamburger {
-            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: flex;
             flex-direction: column;
             cursor: pointer;
-            padding: 5px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .hamburger span {
@@ -76,19 +56,37 @@
             transform: rotate(45deg) translate(-5px, -6px);
         }
 
+        /* Navigation Menu */
         .nav-menu {
-            display: flex;
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            padding: 80px 30px 30px 30px;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-menu.active {
+            right: 0;
+        }
+
+        .nav-menu ul {
             list-style: none;
+            padding: 0;
             margin: 0;
-            padding: 0;
-            gap: 20px;
         }
 
-        .nav-menu li {
+        .nav-menu ul li {
+            margin: 20px 0;
             padding: 0;
         }
 
-        .nav-menu li::before {
+        .nav-menu ul li::before {
             display: none;
         }
 
@@ -96,24 +94,32 @@
             text-decoration: none;
             color: #333;
             font-weight: 500;
-            padding: 10px 15px;
-            border-radius: 25px;
+            font-size: 1.1em;
+            padding: 15px 20px;
+            border-radius: 10px;
             transition: all 0.3s ease;
+            display: block;
         }
 
         .nav-menu a:hover {
             background: #667eea;
             color: white;
+            transform: translateX(10px);
         }
 
-        /* Language Toggle */
+        /* Language Toggle - Bottom Left */
         .language-toggle {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1001;
             display: flex;
             align-items: center;
-            background: #f0f0f0;
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 25px;
             padding: 5px;
-            position: relative;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .lang-option {
@@ -122,11 +128,31 @@
             border-radius: 20px;
             transition: all 0.3s ease;
             font-weight: 500;
+            font-size: 0.9em;
         }
 
         .lang-option.active {
             background: #667eea;
             color: white;
+        }
+
+        /* Overlay for mobile menu */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         .container {
@@ -310,7 +336,7 @@
             display: none;
         }
 
-        /* Mobile Navigation */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .container {
                 margin: 10px;
@@ -337,34 +363,18 @@
                 grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             }
 
-            .hamburger {
-                display: flex;
-            }
-
             .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background-color: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(10px);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-                padding: 20px 0;
+                width: 250px;
             }
 
-            .nav-menu.active {
-                left: 0;
+            .language-toggle {
+                bottom: 20px;
+                left: 20px;
             }
 
-            .nav-menu li {
-                margin: 10px 0;
-            }
-
-            .nav-controls {
-                gap: 10px;
+            .hamburger {
+                top: 15px;
+                right: 15px;
             }
         }
 
@@ -379,29 +389,31 @@
     </style>
 </head>
 <<body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="logo">DAÖ</div>
-        <div class="nav-controls">
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#about" data-en="About" data-tr="Hakkında">About</a></li>
-                <li><a href="#experience" data-en="Experience" data-tr="Deneyim">Experience</a></li>
-                <li><a href="#education" data-en="Education" data-tr="Eğitim">Education</a></li>
-                <li><a href="#projects" data-en="Projects" data-tr="Projeler">Projects</a></li>
-                <li><a href="#skills" data-en="Skills" data-tr="Beceriler">Skills</a></li>
-                <li><a href="#contact" data-en="Contact" data-tr="İletişim">Contact</a></li>
-            </ul>
-            <div class="language-toggle">
-                <div class="lang-option active" id="lang-en">EN</div>
-                <div class="lang-option" id="lang-tr">TR</div>
-            </div>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+    <!-- Hamburger Menu -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Navigation Menu -->
+    <div class="nav-overlay" id="nav-overlay"></div>
+    <nav class="nav-menu" id="nav-menu">
+        <ul>
+            <li><a href="#about" data-en="About" data-tr="Hakkında">About</a></li>
+            <li><a href="#experience" data-en="Experience" data-tr="Deneyim">Experience</a></li>
+            <li><a href="#education" data-en="Education" data-tr="Eğitim">Education</a></li>
+            <li><a href="#projects" data-en="Projects" data-tr="Projeler">Projects</a></li>
+            <li><a href="#skills" data-en="Skills" data-tr="Beceriler">Skills</a></li>
+            <li><a href="#contact" data-en="Contact" data-tr="İletişim">Contact</a></li>
+        </ul>
     </nav>
+
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <div class="lang-option active" id="lang-en">EN</div>
+        <div class="lang-option" id="lang-tr">TR</div>
+    </div>
 
     <div class="container">
         <div class="header">
@@ -662,7 +674,27 @@
                         <div class="company">Reference Contact</div>
                     </div>
                     <div class="experience-item">
+                        <div class="job-title">İbrahim Onur Sığırcı</div>
+                        <div class="company">Reference Contact</div>
+                    </div>
+                    <div class="experience-item">
                         <div class="job-title">İlker Halil Türer</div>
+                        <div class="company">Reference Contact</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="job-title">Mustafa Nişancı</div>
+                        <div class="company">Reference Contact</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="job-title">Çağrı Aksu</div>
+                        <div class="company">Reference Contact</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="job-title">Şevket Ay</div>
+                        <div class="company">Reference Contact</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="job-title">Hakkı Büyükkahraman</div>
                         <div class="company">Reference Contact</div>
                     </div>
                 </div>
@@ -967,11 +999,16 @@
         // Hamburger Menu Functionality
         const hamburger = document.getElementById('hamburger');
         const navMenuContainer = document.getElementById('nav-menu');
+        const navOverlay = document.getElementById('nav-overlay');
 
-        hamburger.addEventListener('click', () => {
+        function toggleMenu() {
             hamburger.classList.toggle('active');
             navMenuContainer.classList.toggle('active');
-        });
+            navOverlay.classList.toggle('active');
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        navOverlay.addEventListener('click', toggleMenu);
 
         // Smooth Scrolling Navigation
         document.querySelectorAll('.nav-menu a').forEach(anchor => {
@@ -996,26 +1033,28 @@
                     });
                 }
 
-                // Close mobile menu after clicking
+                // Close menu after clicking
                 hamburger.classList.remove('active');
                 navMenuContainer.classList.remove('active');
+                navOverlay.classList.remove('active');
             });
         });
 
-        // Close mobile menu when clicking outside
+        // Close menu when clicking outside
         document.addEventListener('click', function (e) {
             if (!hamburger.contains(e.target) && !navMenuContainer.contains(e.target)) {
                 hamburger.classList.remove('active');
                 navMenuContainer.classList.remove('active');
+                navOverlay.classList.remove('active');
             }
         });
 
         // Initialize with English as default
         switchLanguage('en');
     </script>
-    // Initialize with English as default
-    switchLanguage('en');
-    </script>
     </body>
+
+</html>
+</body>
 
 </html>
