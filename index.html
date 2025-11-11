@@ -386,6 +386,121 @@
         .lang-content.active {
             display: block;
         }
+
+        /* Reference Item Styles */
+        .reference-item {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .reference-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+            background: linear-gradient(135deg, #f8f9ff 0%, #eef2ff 100%);
+        }
+
+        .reference-item:hover .company {
+            color: #667eea;
+        }
+
+        /* Modal Styles */
+        .reference-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+        }
+
+        .reference-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #aaa;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: #667eea;
+        }
+
+        .modal-title {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        .modal-info {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .modal-info strong {
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .modal-contact-note {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <<body>
@@ -471,6 +586,8 @@
                         <div class="company">Intertech</div>
                         <div class="duration">2023 - Present | Hybrid</div>
                         <ul>
+                            <li>Designed a custom deep learning–based denoising and background normalization
+                                architecture focused on preserving fine visual details with minimal data loss..</li>
                             <li>Architected and delivered 14+ AI-powered microservices in production, powering real-time
                                 systems for fraud detection, KYC fraud detection, and document analysis within the
                                 finance domain.</li>
@@ -673,14 +790,16 @@
 
                 <div class="section" id="contact">
                     <h2 class="section-title">📞 REFERENCES</h2>
-                    <div class="experience-item">
+                    <div class="experience-item reference-item" onclick="showReferenceModal('onur')">
                         <div class="job-title">Assoc. Prof. Onur Cihan</div>
-                        <div class="company">Reference Contact</div>
+                        <div class="company">👆 Click for reference information</div>
+                        <div class="duration">📧 Contact for reference details</div>
                     </div>
 
-                    <div class="experience-item">
+                    <div class="experience-item reference-item" onclick="showReferenceModal('ilker')">
                         <div class="job-title">İlker Halil Türer</div>
-                        <div class="company">Reference Contact</div>
+                        <div class="company">👆 Click for reference information</div>
+                        <div class="duration">📧 Contact for reference details</div>
                     </div>
                 </div>
             </div>
@@ -713,6 +832,8 @@
                         <div class="company">Intertech</div>
                         <div class="duration">2023 - Günümüz | Hibrit</div>
                         <ul>
+                            <li>İnce görsel detayları koruyarak minimum veri kaybıyla çalışan özel bir derin öğrenme
+                                tabanlı gürültü giderme ve arka plan normalizasyonu mimarisi tasarladım..</li>
                             <li>14+ AI destekli mikroservisi üretimde mimarladım ve teslim ettim, finans alanında
                                 dolandırıcılık tespiti, KYC dolandırıcılık tespiti ve belge analizi konularında gerçek
                                 zamanlı sistemler geliştirdim.</li>
@@ -914,16 +1035,28 @@
 
                 <div class="section" id="contact-tr">
                     <h2 class="section-title">📞 REFERANSLAR</h2>
-                    <div class="experience-item">
+                    <div class="experience-item reference-item" onclick="showReferenceModal('onur')">
                         <div class="job-title">Doç. Dr. Onur Cihan</div>
-                        <div class="company">Referans İletişim</div>
+                        <div class="company">👆 Referans bilgileri için tıklayınız</div>
+                        <div class="duration">📧 Referans detayları için iletişime geçiniz</div>
                     </div>
 
-                    <div class="experience-item">
+                    <div class="experience-item reference-item" onclick="showReferenceModal('ilker')">
                         <div class="job-title">İlker Halil Türer</div>
-                        <div class="company">Referans İletişim</div>
+                        <div class="company">👆 Referans bilgileri için tıklayınız</div>
+                        <div class="duration">📧 Referans detayları için iletişime geçiniz</div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reference Modal -->
+    <div id="referenceModal" class="reference-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeReferenceModal()">&times;</span>
+            <div id="modalContent">
+                <!-- Modal content will be populated by JavaScript -->
             </div>
         </div>
     </div>
@@ -1022,6 +1155,114 @@
 
         // Initialize with English as default
         switchLanguage('en');
+
+        // Reference Modal Functionality
+        const referenceData = {
+            onur: {
+                en: {
+                    title: "Assoc. Prof. Onur Cihan",
+                    position: "Associate Professor",
+                    institution: "Marmara University - Faculty of Engineering",
+                    department: "Electrical & Electronics Engineering",
+                    relationship: "Academic Supervisor & Project Mentor",
+                    note: "For detailed reference information, please contact me directly."
+                },
+                tr: {
+                    title: "Doç. Dr. Onur Cihan",
+                    position: "Doçent",
+                    institution: "Marmara Üniversitesi - Mühendislik Fakültesi",
+                    department: "Elektrik ve Elektronik Mühendisliği",
+                    relationship: "Akademik Danışman ve Proje Mentoru",
+                    note: "Detaylı referans bilgileri için lütfen benimle doğrudan iletişime geçiniz."
+                }
+            },
+            ilker: {
+                en: {
+                    title: "İlker Halil Türer",
+                    position: "Senior Technical Lead",
+                    institution: "Intertech A.Ş.",
+                    department: "AI & Data Science Team",
+                    relationship: "Direct Manager & Technical Mentor",
+                    note: "For detailed reference information, please contact me directly."
+                },
+                tr: {
+                    title: "İlker Halil Türer",
+                    position: "Kıdemli Teknik Lider",
+                    institution: "Intertech A.Ş.",
+                    department: "AI ve Veri Bilimi Ekibi",
+                    relationship: "Direkt Yönetici ve Teknik Mentor",
+                    note: "Detaylı referans bilgileri için lütfen benimle doğrudan iletişime geçiniz."
+                }
+            }
+        };
+
+        function showReferenceModal(referenceKey) {
+            const modal = document.getElementById('referenceModal');
+            const modalContent = document.getElementById('modalContent');
+            const currentLang = document.documentElement.lang;
+            const data = referenceData[referenceKey][currentLang];
+
+            const labels = currentLang === 'en' ? {
+                position: 'Position',
+                institution: 'Institution',
+                department: 'Department',
+                relationship: 'Professional Relationship'
+            } : {
+                position: 'Pozisyon',
+                institution: 'Kurum',
+                department: 'Bölüm',
+                relationship: 'Mesleki İlişki'
+            };
+
+            modalContent.innerHTML = `
+                <h2 class="modal-title">${data.title}</h2>
+                <div class="modal-info">
+                    <strong>${labels.position}:</strong>
+                    ${data.position}
+                </div>
+                <div class="modal-info">
+                    <strong>${labels.institution}:</strong>
+                    ${data.institution}
+                </div>
+                <div class="modal-info">
+                    <strong>${labels.department}:</strong>
+                    ${data.department}
+                </div>
+                <div class="modal-info">
+                    <strong>${labels.relationship}:</strong>
+                    ${data.relationship}
+                </div>
+                <div class="modal-contact-note">
+                    <strong>📧 ${data.note}</strong>
+                    <br><br>
+                    <div style="font-size: 0.9em; opacity: 0.9;">
+                        durmusali.dali@gmail.com | +905396377304
+                    </div>
+                </div>
+            `;
+
+            modal.classList.add('show');
+        }
+
+        function closeReferenceModal() {
+            const modal = document.getElementById('referenceModal');
+            modal.classList.remove('show');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function (event) {
+            const modal = document.getElementById('referenceModal');
+            if (event.target === modal) {
+                closeReferenceModal();
+            }
+        }
+
+        // Close modal with ESC key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeReferenceModal();
+            }
+        });
     </script>
     </body>
 
